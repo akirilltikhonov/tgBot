@@ -10,7 +10,7 @@
     </appender>
 
     <appender name="all" class="ch.qos.logback.core.FileAppender">
-        <file>logs\all.log</file>
+        <file>target\logs\all.log</file>
         <append>false</append>
         <immediateFlush>true</immediateFlush>
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
@@ -22,7 +22,7 @@
     </appender>
 
     <appender name="main" class="ch.qos.logback.core.FileAppender">
-        <file>logs\main.log</file>
+        <file>target\logs\main.log</file>
         <append>false</append>
         <immediateFlush>true</immediateFlush>
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
@@ -34,7 +34,7 @@
     </appender>
 
     <appender name="spring" class="ch.qos.logback.core.FileAppender">
-        <file>logs\spring.log</file>
+        <file>target\logs\spring.log</file>
         <append>false</append>
         <immediateFlush>true</immediateFlush>
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">

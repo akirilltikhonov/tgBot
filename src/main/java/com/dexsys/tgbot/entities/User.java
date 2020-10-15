@@ -1,7 +1,10 @@
-package com.dexsys.tgbot;
+package com.dexsys.tgbot.entities;
 
-import lombok.*;
-
+import lombok.RequiredArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import java.util.Date;
 
 @RequiredArgsConstructor

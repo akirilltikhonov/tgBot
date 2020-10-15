@@ -1,7 +1,0 @@
-00:04:40.008 [main] INFO  com.dexsys.tgbot.TgBotApplication - Starting TgBotApplication on DESKTOP-ES0JHC5 with PID 13476 (C:\Users\User\Desktop\tgBot\target\classes started by User in C:\Users\User\Desktop\tgBot)
-00:04:40.009 [main] INFO  com.dexsys.tgbot.TgBotApplication - No active profile set, falling back to default profiles: default
-00:04:41.399 [main] INFO  com.dexsys.tgbot.TgBotApplication - Started TgBotApplication in 1.651 seconds (JVM running for 2.363)
-00:04:41.402 [main] INFO  com.dexsys.tgbot.TgBotApplication - Start main
-00:04:41.407 [main] INFO  com.dexsys.tgbot.TgBotApplication - Init app context
-00:04:41.408 [main] INFO  com.dexsys.tgbot.models.ClientsDB - Init clients DB
-00:04:41.952 [main] INFO  com.dexsys.tgbot.TgBotApplication - Finish main

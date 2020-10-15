@@ -1,7 +1,12 @@
 package com.dexsys.tgbot;
 
+import com.dexsys.tgbot.entities.User;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
+import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
@@ -10,23 +15,49 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardRem
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
+import javax.validation.constraints.AssertFalse;
 import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Component
 @Slf4j
 public class BirthdayBot extends TelegramLongPollingBot {
 
-    private static final String USERNAME = "DexsysBirthDayReminderBot";
-    private static final String TOKEN = "1253004857:AAF6euRhr1lyVeu8s5ODmRIlgOVKwS6Me_w";
-    private final DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
-    private Map<String, User> users = new HashMap<>();
-    private boolean allowedEnterBirthday = false;
+    @Value("${bot.username}")
+    private String USERNAME;
+
+    @Value("${bot.token}")
+    private String TOKEN;
+
+    @Resource(name = "setDateFormat")
+    private DateFormat dateFormat;
+
+    @Resource(name = "newHashMap")
+    private Map<String, User> users;
+
+    @AssertFalse
+    private boolean allowedEnterBirthday;
+
+    @Autowired
+    private TelegramBotsApi telegramBotsApi;
+
+    @PostConstruct
+    public void startBirthdayBot() {
+        BirthdayBot bot = this;
+        try {
+            telegramBotsApi.registerBot(bot);
+        } catch (TelegramApiRequestException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     @Override
     public String getBotUsername() {
