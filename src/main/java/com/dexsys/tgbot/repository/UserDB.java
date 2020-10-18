@@ -3,7 +3,6 @@ package com.dexsys.tgbot.repository;
 import com.dexsys.tgbot.entities.User;
 import lombok.Getter;
 import org.springframework.stereotype.Repository;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 
 import javax.annotation.Resource;
 import java.text.DateFormat;

@@ -6,6 +6,8 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 
 public interface MessageHandler {
 
+    BotState getHandlerState();
+
     SendMessage handle(Message message);
 
     default String getUserName(Message msg) {
@@ -15,6 +17,4 @@ public interface MessageHandler {
         }
         return userName;
     }
-
-    BotState getHandlerState();
 }
