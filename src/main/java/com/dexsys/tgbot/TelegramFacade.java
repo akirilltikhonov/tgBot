@@ -41,7 +41,7 @@ public class TelegramFacade {
         BotState botState;
         SendMessage replyMessage;
 
-        System.out.println(DBService.getUsers());
+        System.out.println(DBService.getUsersMap());
         System.out.println(inputMsg);
 
         if (inputMsg.equals("Enter my date of birth")) {
@@ -57,7 +57,7 @@ public class TelegramFacade {
         replyMessage = botStateContext.setState(botState, message);
         replyMessage.setChatId(message.getChatId());
 
-        System.out.println(DBService.getUsers());
+        System.out.println(DBService.getUsersMap());
 
         return replyMessage;
     }

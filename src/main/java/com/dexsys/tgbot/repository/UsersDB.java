@@ -10,17 +10,17 @@ import java.util.Map;
 
 @Repository
 @Getter
-public class UserDB {
+public class UsersDB implements IUserDB {
 
     @Resource(name = "setDateFormat")
     private DateFormat dateFormat;
 
     @Resource(name = "newHashMap")
-    private Map<String, User> users;
+    private Map<String, User> usersMap;
 
-    public synchronized void addUser(User user) {
-        if (!users.containsKey(user.getUserName())) {
-            users.put(user.getUserName(), user);
+    public void addUser(User user) {
+        if (!usersMap.containsKey(user.getUserName())) {
+            usersMap.put(user.getUserName(), user);
         }
     }
 
