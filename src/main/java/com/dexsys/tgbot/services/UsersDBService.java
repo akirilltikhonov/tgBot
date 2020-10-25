@@ -1,19 +1,21 @@
 package com.dexsys.tgbot.services;
 
 import com.dexsys.tgbot.entities.User;
-import com.dexsys.tgbot.repository.IUserDB;
+import com.dexsys.tgbot.repository.IUsersDB;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.objects.Message;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 @Service
-public class DBService {
+public class UsersDBService {
 
     @Autowired
-    private IUserDB usersDB;
+    private IUsersDB usersDB;
 
     public void addUser(Message message) {
         long chatId = message.getChatId();
@@ -23,6 +25,10 @@ public class DBService {
 
     public Map<String, User> getUsersMap() {
         return usersDB.getUsersMap();
+    }
+
+    public List<User> getUsers() {
+        return new ArrayList<>(usersDB.getUsersMap().values());
     }
 
     public DateFormat getDateFormat() {

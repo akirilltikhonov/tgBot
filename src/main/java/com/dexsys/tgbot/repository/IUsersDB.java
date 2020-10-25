@@ -5,7 +5,7 @@ import com.dexsys.tgbot.entities.User;
 import java.text.DateFormat;
 import java.util.Map;
 
-public interface IUserDB {
+public interface IUsersDB {
     DateFormat getDateFormat();
     Map<String, User> getUsersMap();
     void addUser(User user);

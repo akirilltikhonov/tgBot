@@ -10,7 +10,7 @@ import java.util.Map;
 
 @Repository
 @Getter
-public class UsersDB implements IUserDB {
+public class UsersDB implements IUsersDB {
 
     @Resource(name = "setDateFormat")
     private DateFormat dateFormat;
