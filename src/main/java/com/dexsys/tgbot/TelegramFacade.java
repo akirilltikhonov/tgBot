@@ -37,7 +37,6 @@ public class TelegramFacade {
     public synchronized SendMessage handleInputMessage(Message message) {
 
         String inputMsg = message.getText();
-
         BotState botState;
         SendMessage replyMessage;
 
@@ -48,6 +47,10 @@ public class TelegramFacade {
             botState = BotState.ENTER_BIRTHDAY;
         } else if (mainMenuService.isAllowedEnterBirthday()) {
             botState = BotState.SET_USER_BIRTHDAY;
+        } else if (inputMsg.equals("Enter my phone number")) {
+            botState = BotState.ENTER_PHONE_NUMBER;
+        } else if (mainMenuService.isAllowedEnterPhoneNumber()) {
+            botState = BotState.SET_PHONE_NUMBER;
         } else if (inputMsg.equals("List of users")) {
             botState = BotState.SHOW_USERS;
         } else {

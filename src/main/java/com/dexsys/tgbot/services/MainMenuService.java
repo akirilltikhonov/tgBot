@@ -13,12 +13,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Getter
+@Setter
 public class MainMenuService {
 
-    @Getter
-    @Setter
     @AssertFalse
     private boolean allowedEnterBirthday;
+
+    @AssertFalse
+    private boolean allowedEnterPhoneNumber;
 
     public void setKeyboard(SendMessage replyMessage) {
 
@@ -31,8 +34,11 @@ public class MainMenuService {
 
         KeyboardRow keyboardFirstRow = new KeyboardRow();
         keyboardFirstRow.add(new KeyboardButton("Enter my date of birth"));
+        keyboardFirstRow.add(new KeyboardButton("Enter my phone number"));
+
         KeyboardRow keyboardSecondRow = new KeyboardRow();
         keyboardSecondRow.add(new KeyboardButton("List of users"));
+
 
         keyboard.add(keyboardFirstRow);
         keyboard.add(keyboardSecondRow);

@@ -13,6 +13,7 @@ public class EntitiesToDTOService {
         UserDTO userDTO = new UserDTO();
         userDTO.setUserName(user.getUserName());
         userDTO.setChatId(user.getChatId());
+        userDTO.setPhoneNumber(user.getPhoneNumber());
         userDTO.setBirthDate(user.getBirthDate());
         return userDTO;
     }

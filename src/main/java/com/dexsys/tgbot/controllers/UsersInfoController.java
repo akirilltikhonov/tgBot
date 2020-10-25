@@ -27,7 +27,8 @@ public class UsersInfoController {
     @GetMapping("/info")
     @ResponseStatus(code = HttpStatus.OK)
     public HttpEntity<List<UserDTO>> getUsersInfo() {
-        List<UserDTO> usersDTO = entitiesToDTOService.UsersToUsersDTO(usersDBService.getUsers());
+        List<User> users = usersDBService.getUsers();
+        List<UserDTO> usersDTO = entitiesToDTOService.UsersToUsersDTO(users);
         return ResponseEntity.ok(usersDTO);
     }
 

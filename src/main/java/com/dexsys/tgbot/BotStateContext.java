@@ -1,6 +1,6 @@
 package com.dexsys.tgbot;
 
-import com.dexsys.tgbot.handlers.MessageHandler;
+import com.dexsys.tgbot.handlers.BotMessageHandler;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
@@ -12,18 +12,18 @@ import java.util.Map;
 @Component
 public class BotStateContext {
 
-    private final Map<BotState, MessageHandler> messageHandlers = new HashMap<>();
+    private final Map<BotState, BotMessageHandler> messageHandlers = new HashMap<>();
 
-    public BotStateContext(List<MessageHandler> messageHandlers) {
-        messageHandlers.forEach(handler -> this.messageHandlers.put(handler.getHandlerState(), handler));
+    public BotStateContext(List<BotMessageHandler> botMessageHandlers) {
+        botMessageHandlers.forEach(handler -> this.messageHandlers.put(handler.getHandlerState(), handler));
     }
 
     public SendMessage setState(BotState currentState, Message message) {
-        MessageHandler currentHandler = findMessageHandler(currentState);
+        BotMessageHandler currentHandler = findMessageHandler(currentState);
         return currentHandler.handle(message);
     }
 
-    public MessageHandler findMessageHandler(BotState currentState) {
+    public BotMessageHandler findMessageHandler(BotState currentState) {
         return messageHandlers.get(currentState);
     }
 }
