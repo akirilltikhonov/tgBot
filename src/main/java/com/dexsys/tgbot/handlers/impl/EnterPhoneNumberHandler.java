@@ -10,7 +10,7 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardRemove;
 
 @Component
-public class EnterPhoneNumberHandlerBot implements BotMessageHandler {
+public class EnterPhoneNumberHandler implements BotMessageHandler {
 
     @Autowired
     private MainMenuService mainMenuService;

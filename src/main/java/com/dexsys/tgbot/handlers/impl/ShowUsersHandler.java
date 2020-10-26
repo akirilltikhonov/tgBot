@@ -9,7 +9,7 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 
 @Component
-public class ShowUsersHandlerBot implements BotMessageHandler {
+public class ShowUsersHandler implements BotMessageHandler {
 
     @Autowired
     private UsersDBService UsersDBService;

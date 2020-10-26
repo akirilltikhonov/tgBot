@@ -2,41 +2,30 @@ package com.dexsys.tgbot.handlers.impl;
 
 import com.dexsys.tgbot.BotState;
 import com.dexsys.tgbot.handlers.BotMessageHandler;
-import com.dexsys.tgbot.services.UsersDBService;
 import com.dexsys.tgbot.services.MainMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
-
-import java.text.ParseException;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardRemove;
 
 @Component
-public class SetUserBirthdayHandlerBot implements BotMessageHandler {
+public class EnterBirthdayHandler implements BotMessageHandler {
 
     @Autowired
     private MainMenuService mainMenuService;
 
-    @Autowired
-    private UsersDBService UsersDBService;
-
     @Override
     public BotState getHandlerState() {
-        return BotState.SET_USER_BIRTHDAY;
+        return BotState.ENTER_BIRTHDAY;
     }
 
     @Override
     public SendMessage handle(Message message) {
-
         SendMessage replyMessage = new SendMessage();
-        try {
-            UsersDBService.getUsersMap().get(getUserName(message)).setBirthDate(UsersDBService.getDateFormat().parse(message.getText()));
-            replyMessage.setText("ok");
-        } catch (ParseException e) {
-            replyMessage.setText("Incorrect date. Try again");
-        }
-        mainMenuService.setKeyboard(replyMessage);
-        mainMenuService.setAllowedEnterBirthday(false);
+        replyMessage.setText("Enter your date of birth in format 'dd.MM.yyyy'. For example: 01.01.2001");
+        replyMessage.setReplyMarkup(new ReplyKeyboardRemove());
+        mainMenuService.setAllowedEnterBirthday(true);
         return replyMessage;
     }
 }

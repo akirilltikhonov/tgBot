@@ -7,25 +7,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardRemove;
 
 @Component
-public class EnterBirthdayHandlerBot implements BotMessageHandler {
+public class MainMenuHandler implements BotMessageHandler {
 
     @Autowired
     private MainMenuService mainMenuService;
 
     @Override
     public BotState getHandlerState() {
-        return BotState.ENTER_BIRTHDAY;
+        return BotState.MAIN_MENU;
     }
 
     @Override
     public SendMessage handle(Message message) {
         SendMessage replyMessage = new SendMessage();
-        replyMessage.setText("Enter your date of birth in format 'dd.MM.yyyy'. For example: 01.01.2001");
-        replyMessage.setReplyMarkup(new ReplyKeyboardRemove());
-        mainMenuService.setAllowedEnterBirthday(true);
+        replyMessage.setText(message.getText());
+        mainMenuService.setKeyboard(replyMessage);
         return replyMessage;
     }
 }

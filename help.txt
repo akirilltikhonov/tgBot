@@ -1,0 +1,7 @@
+This bot forward text from client message to client.
+
+After client send message to bot and bot save client as a User (userName, chatId). Further client have 3 buttons in
+chat main menu. He can enter him date of birthday and phone number, bot save it to User (userName, chatId, phoneNumber,
+birthday).
+
+Also client can push third button and he is receives list of all Users, who send message and info about yourself to bot.
