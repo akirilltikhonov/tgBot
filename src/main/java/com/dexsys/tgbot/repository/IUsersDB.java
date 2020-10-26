@@ -7,6 +7,6 @@ import java.util.Map;
 
 public interface IUsersDB {
     DateFormat getDateFormat();
-    Map<String, User> getUsersMap();
+    Map<Long, User> getUsersMap();
     void addUser(User user);
 }

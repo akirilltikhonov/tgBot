@@ -10,11 +10,4 @@ public interface BotMessageHandler {
 
     SendMessage handle(Message message);
 
-    default String getUserName(Message msg) {
-        String userName;
-        if ((userName = msg.getChat().getUserName()) == null) {
-            userName = msg.getChat().getFirstName() + " " + msg.getChat().getLastName();
-        }
-        return userName;
-    }
 }

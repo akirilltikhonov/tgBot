@@ -30,7 +30,8 @@ public class SetUserBirthdayHandler implements BotMessageHandler {
 
         SendMessage replyMessage = new SendMessage();
         try {
-            UsersDBService.getUsersMap().get(getUserName(message)).setBirthDate(UsersDBService.getDateFormat().parse(message.getText()));
+            UsersDBService.getUsersMap().get(message.getChatId())
+                    .setBirthDate(UsersDBService.getDateFormat().parse(message.getText()));
             replyMessage.setText("ok");
         } catch (ParseException e) {
             replyMessage.setText("Incorrect date. Try again");

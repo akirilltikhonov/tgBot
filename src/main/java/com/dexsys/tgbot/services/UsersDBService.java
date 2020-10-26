@@ -1,6 +1,7 @@
 package com.dexsys.tgbot.services;
 
 import com.dexsys.tgbot.entities.User;
+import com.dexsys.tgbot.exception.NotFoundException;
 import com.dexsys.tgbot.repository.IUsersDB;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,12 +24,24 @@ public class UsersDBService {
         usersDB.addUser(new User(userName, chatId));
     }
 
-    public Map<String, User> getUsersMap() {
+    public Map<Long, User> getUsersMap() {
         return usersDB.getUsersMap();
     }
 
     public List<User> getUsers() {
         return new ArrayList<>(usersDB.getUsersMap().values());
+    }
+
+    public User getUserByPhoneNumber(String phoneNumber) {
+        return getUsers().stream().filter(user -> user.getPhoneNumber().equals(phoneNumber))
+                .findFirst().orElseThrow(NotFoundException::new);
+    }
+
+    public void deleteUserByPhoneNumber(String phoneNumber) {
+        long chatId = getUserByPhoneNumber(phoneNumber).getChatId();
+        if (getUsersMap().remove(chatId) == null) {
+            throw new NotFoundException();
+        }
     }
 
     public DateFormat getDateFormat() {

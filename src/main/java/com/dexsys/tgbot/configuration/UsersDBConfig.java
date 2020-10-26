@@ -20,7 +20,7 @@ public class UsersDBConfig {
     }
 
     @Bean
-    public HashMap<String, User> newHashMap() {
+    public HashMap<Long, User> newHashMap() {
         return new HashMap<>();
     }
 }

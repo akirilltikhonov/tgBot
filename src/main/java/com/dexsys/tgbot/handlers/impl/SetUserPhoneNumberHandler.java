@@ -29,7 +29,7 @@ public class SetUserPhoneNumberHandler implements BotMessageHandler {
         String phoneNumber = message.getText().replaceAll("\\s+", "");
 
         if (phoneNumber.matches("[\\d]{10}")) {
-            UsersDBService.getUsersMap().get(getUserName(message)).setPhoneNumber(phoneNumber);
+            UsersDBService.getUsersMap().get(message.getChatId()).setPhoneNumber(phoneNumber);
             replyMessage.setText("ok");
         } else {
             replyMessage.setText("Incorrect phone number. Try again");

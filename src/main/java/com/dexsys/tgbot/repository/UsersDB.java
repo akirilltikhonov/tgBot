@@ -16,11 +16,11 @@ public class UsersDB implements IUsersDB {
     private DateFormat dateFormat;
 
     @Resource(name = "newHashMap")
-    private Map<String, User> usersMap;
+    private Map<Long, User> usersMap;
 
     public void addUser(User user) {
-        if (!usersMap.containsKey(user.getUserName())) {
-            usersMap.put(user.getUserName(), user);
+        if (!usersMap.containsKey(user.getChatId())) {
+            usersMap.put(user.getChatId(), user);
         }
     }
 
