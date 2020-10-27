@@ -13,6 +13,6 @@ public class UserDTO {
     private String userName;
     private long  chatId;
     private String phoneNumber;
-    private Date birthDate;
+    private Date birthdate;
 
 }

@@ -17,6 +17,6 @@ public class User {
      private final String userName;
      private final long  chatId;
      private String phoneNumber;
-     private Date birthDate;
+     private Date birthdate;
 
 }

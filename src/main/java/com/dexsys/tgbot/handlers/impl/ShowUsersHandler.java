@@ -27,7 +27,7 @@ public class ShowUsersHandler implements BotMessageHandler {
                 forEach(x ->
                         stringBuffer.append(String.format("User: %s; ChatId: %s; Phone number: %s; Birthday: %s\n",
                                 x.getUserName(), x.getChatId(), x.getPhoneNumber(),
-                                x.getBirthDate() == null ? null : UsersRepositoryService.getDateFormat().format(x.getBirthDate()))));
+                                x.getBirthdate() == null ? null : UsersRepositoryService.getDateFormat().format(x.getBirthdate()))));
         replyMessage.setText(stringBuffer.toString());
         return replyMessage;
     }
