@@ -15,7 +15,7 @@ public class SetUserPhoneNumberHandler implements BotMessageHandler {
     private MainMenuService mainMenuService;
 
     @Autowired
-    private com.dexsys.tgbot.services.UsersDBService UsersDBService;
+    private com.dexsys.tgbot.services.UsersRepositoryService UsersRepositoryService;
 
     @Override
     public BotState getHandlerState() {
@@ -29,7 +29,7 @@ public class SetUserPhoneNumberHandler implements BotMessageHandler {
         String phoneNumber = message.getText().replaceAll("\\s+", "");
 
         if (phoneNumber.matches("[\\d]{10}")) {
-            UsersDBService.getUsersMap().get(message.getChatId()).setPhoneNumber(phoneNumber);
+            UsersRepositoryService.getUsersMap().get(message.getChatId()).setPhoneNumber(phoneNumber);
             replyMessage.setText("ok");
         } else {
             replyMessage.setText("Incorrect phone number. Try again");

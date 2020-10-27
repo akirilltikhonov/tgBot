@@ -1,6 +1,6 @@
 package com.dexsys.tgbot;
 
-import com.dexsys.tgbot.services.UsersDBService;
+import com.dexsys.tgbot.services.UsersRepositoryService;
 import com.dexsys.tgbot.services.MainMenuService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ public class TelegramFacade {
     private BotStateContext botStateContext;
 
     @Autowired
-    private UsersDBService UsersDBService;
+    private UsersRepositoryService UsersRepositoryService;
 
     @Autowired
     private MainMenuService mainMenuService;
@@ -29,7 +29,7 @@ public class TelegramFacade {
 
         if (message != null && message.hasText()) {
             replyMessage = handleInputMessage(message);
-            UsersDBService.addUser(message);
+            UsersRepositoryService.addUser(message);
         }
         return replyMessage;
     }
@@ -40,7 +40,7 @@ public class TelegramFacade {
         BotState botState;
         SendMessage replyMessage;
 
-        System.out.println(UsersDBService.getUsersMap());
+        System.out.println(UsersRepositoryService.getUsersMap());
         System.out.println(inputMsg);
 
         if (inputMsg.equals("Enter my date of birth")) {
@@ -60,7 +60,7 @@ public class TelegramFacade {
         replyMessage = botStateContext.setState(botState, message);
         replyMessage.setChatId(message.getChatId());
 
-        System.out.println(UsersDBService.getUsersMap());
+        System.out.println(UsersRepositoryService.getUsersMap());
 
         return replyMessage;
     }

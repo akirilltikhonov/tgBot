@@ -3,9 +3,8 @@ package com.dexsys.tgbot.controllers;
 
 import com.dexsys.tgbot.dto.UserDTO;
 import com.dexsys.tgbot.entities.User;
-import com.dexsys.tgbot.exception.NotFoundException;
 import com.dexsys.tgbot.services.EntitiesToDTOService;
-import com.dexsys.tgbot.services.UsersDBService;
+import com.dexsys.tgbot.services.UsersRepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
@@ -21,12 +20,12 @@ public class UsersController {
     private EntitiesToDTOService entitiesToDTOService;
 
     @Autowired
-    private UsersDBService usersDBService;
+    private UsersRepositoryService usersRepositoryService;
 
     @GetMapping("/info")
     @ResponseStatus(code = HttpStatus.OK)
     public HttpEntity<List<UserDTO>> getUsersInfo() {
-        List<User> users = usersDBService.getUsers();
+        List<User> users = usersRepositoryService.getUsers();
         List<UserDTO> usersDTO = entitiesToDTOService.UsersToUsersDTO(users);
         return ResponseEntity.ok(usersDTO);
     }
@@ -34,7 +33,7 @@ public class UsersController {
     @GetMapping("/info/{phoneNumber}")
     @ResponseStatus(code = HttpStatus.OK)
     public HttpEntity<UserDTO> getUserByPhoneNumber(@PathVariable String phoneNumber) {
-        User user = usersDBService.getUserByPhoneNumber(phoneNumber);
+        User user = usersRepositoryService.getUserByPhoneNumber(phoneNumber);
         UserDTO userDTO = entitiesToDTOService.UserToUserDTO(user);
         return ResponseEntity.ok(userDTO);
     }
@@ -42,6 +41,6 @@ public class UsersController {
     @DeleteMapping("/info/{phoneNumber}")
     @ResponseStatus(code = HttpStatus.OK)
     public void deleteUserByPhoneNumber(@PathVariable String phoneNumber) {
-        usersDBService.deleteUserByPhoneNumber(phoneNumber);
+        usersRepositoryService.deleteUserByPhoneNumber(phoneNumber);
     }
 }

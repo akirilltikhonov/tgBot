@@ -2,7 +2,7 @@ package com.dexsys.tgbot.services;
 
 import com.dexsys.tgbot.entities.User;
 import com.dexsys.tgbot.exception.NotFoundException;
-import com.dexsys.tgbot.repository.IUsersDB;
+import com.dexsys.tgbot.repository.IUsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.objects.Message;
@@ -13,10 +13,10 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class UsersDBService {
+public class UsersRepositoryService {
 
     @Autowired
-    private IUsersDB usersDB;
+    private IUsersRepository usersDB;
 
     public void addUser(Message message) {
         long chatId = message.getChatId();

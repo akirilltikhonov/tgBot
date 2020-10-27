@@ -2,7 +2,7 @@ package com.dexsys.tgbot.handlers.impl;
 
 import com.dexsys.tgbot.BotState;
 import com.dexsys.tgbot.handlers.BotMessageHandler;
-import com.dexsys.tgbot.services.UsersDBService;
+import com.dexsys.tgbot.services.UsersRepositoryService;
 import com.dexsys.tgbot.services.MainMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,7 +18,7 @@ public class SetUserBirthdayHandler implements BotMessageHandler {
     private MainMenuService mainMenuService;
 
     @Autowired
-    private UsersDBService UsersDBService;
+    private UsersRepositoryService UsersRepositoryService;
 
     @Override
     public BotState getHandlerState() {
@@ -30,8 +30,8 @@ public class SetUserBirthdayHandler implements BotMessageHandler {
 
         SendMessage replyMessage = new SendMessage();
         try {
-            UsersDBService.getUsersMap().get(message.getChatId())
-                    .setBirthDate(UsersDBService.getDateFormat().parse(message.getText()));
+            UsersRepositoryService.getUsersMap().get(message.getChatId())
+                    .setBirthDate(UsersRepositoryService.getDateFormat().parse(message.getText()));
             replyMessage.setText("ok");
         } catch (ParseException e) {
             replyMessage.setText("Incorrect date. Try again");

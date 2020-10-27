@@ -12,7 +12,7 @@ import java.util.HashMap;
 
 @Configuration
 @PropertySource("classpath:bot.properties")
-public class UsersDBConfig {
+public class UsersRepositoryConfig {
 
     @Bean
     public DateFormat setDateFormat(@Value("${bot.dateFormat}") String pattern) {
