@@ -1,14 +1,23 @@
 package com.dexsys.tgbot.domain;
 
 import com.dexsys.tgbot.adapters.ITelegramFacade;
+import com.dexsys.tgbot.adapters.IUserClient;
+import com.dexsys.tgbot.app.userMock.UserDto;
+import com.dexsys.tgbot.app.userMock.UserMockClient;
 import com.dexsys.tgbot.domain.services.UsersRepositoryService;
 import com.dexsys.tgbot.domain.services.MainMenuService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
+
+import java.util.Date;
+import java.util.List;
+import java.util.Set;
+import java.util.UUID;
 
 @Component
 @Slf4j
@@ -43,6 +52,24 @@ public class TelegramFacade implements ITelegramFacade {
 
         System.out.println(UsersRepositoryService.getUsersMap());
         System.out.println(inputMsg);
+
+        IUserClient iUserClient = new UserMockClient();
+        List<UserDto> usersDto = iUserClient.getUsers();
+        System.out.println();
+
+        UserDto userDto = iUserClient.getUser("8713deba-8dbf-4f57-bd1e-67c6c960d728");
+        System.out.println();
+
+        Set<HttpMethod> options = iUserClient.getUserOptions("8713deba-8dbf-4f57-bd1e-67c6c960d728");
+        System.out.println();
+
+        iUserClient.generateUser();
+        System.out.println();
+
+        iUserClient.getUsers();
+
+//        iUserClient.createUser(new UserDto(UUID.randomUUID().toString(), "a", "a", "a", new Date(), "a", "a", true));
+//        System.out.println();
 
         if (inputMsg.equals("Enter my date of birth")) {
             botState = BotState.ENTER_BIRTHDAY;
