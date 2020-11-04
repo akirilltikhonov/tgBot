@@ -16,6 +16,6 @@ public interface IUserClient {
 
     void generateUser();
 
-//    void createUser(UserDto userDtoPost);
+    void createUser(UserDto userDtoPost);
 
 }

@@ -57,19 +57,20 @@ public class TelegramFacade implements ITelegramFacade {
         List<UserDto> usersDto = iUserClient.getUsers();
         System.out.println();
 
-        UserDto userDto = iUserClient.getUser("8713deba-8dbf-4f57-bd1e-67c6c960d728");
+        UserDto userDto = iUserClient.getUser("30e510e6-c0eb-4efe-826b-7f140836097e");
         System.out.println();
 
-        Set<HttpMethod> options = iUserClient.getUserOptions("8713deba-8dbf-4f57-bd1e-67c6c960d728");
+        Set<HttpMethod> options = iUserClient.getUserOptions("30e510e6-c0eb-4efe-826b-7f140836097e");
         System.out.println();
 
         iUserClient.generateUser();
         System.out.println();
 
-        iUserClient.getUsers();
+        iUserClient.createUser(new UserDto());
+        System.out.println();
 
-//        iUserClient.createUser(new UserDto(UUID.randomUUID().toString(), "a", "a", "a", new Date(), "a", "a", true));
-//        System.out.println();
+        iUserClient.getUsers();
+        System.out.println();
 
         if (inputMsg.equals("Enter my date of birth")) {
             botState = BotState.ENTER_BIRTHDAY;

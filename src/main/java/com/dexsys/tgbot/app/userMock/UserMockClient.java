@@ -78,20 +78,20 @@ public class UserMockClient implements IUserClient {
     }
 
 
-//    @Override
-//    public void createUser(UserDto userDtoPost) {
-//        String url = "https://serene-coast-56441.herokuapp.com//api/users";
-//
-//        ResponseEntity<UserDto> response =
-//                restTemplate.postForEntity(
-//                        url,
-//                        userDtoPost,
-//                        UserDto.class);
-//        UserDto userDtoResponse = response.getBody();
-//
-//        System.out.println("createUser");
-//        System.out.println(response.getStatusCode());
-//        System.out.println(userDtoPost);
-//        System.out.println(userDtoResponse);
-//    }
+    @Override
+    public void createUser(UserDto userDtoPost) {
+        String url = "https://serene-coast-56441.herokuapp.com//api/users";
+
+        ResponseEntity<UserDto> response =
+                restTemplate.postForEntity(
+                        url,
+                        userDtoPost,
+                        UserDto.class);
+        UserDto userDtoResponse = response.getBody();
+
+        System.out.println("createUser");
+        System.out.println(response.getStatusCode());
+        System.out.println("Post: " + userDtoPost);
+        System.out.println("Response: " + userDtoResponse);
+    }
 }
