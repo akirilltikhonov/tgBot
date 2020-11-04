@@ -1,18 +1,22 @@
 package com.dexsys.tgbot.app.userMock;
 
 import com.dexsys.tgbot.adapters.IUserClient;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
+@Component
 public class UserMockClient implements IUserClient {
 
-    private final RestTemplate restTemplate = new RestTemplate();
+    @Autowired
+    private RestTemplate restTemplate;
 
     @Override
     public List<UserDto> getUsers() {
