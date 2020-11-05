@@ -19,6 +19,7 @@
 	<properties>
 		<java.version>11</java.version>
 		<lombok.version>1.18.12</lombok.version>
+		<telegram.version>4.9.1</telegram.version>
 		<springfox.version>3.0.0</springfox.version>
 	</properties>
 
@@ -51,13 +52,13 @@
 		<dependency>
 			<groupId>org.telegram</groupId>
 			<artifactId>telegrambots</artifactId>
-			<version>LATEST</version>
+			<version>${telegram.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.telegram</groupId>
 			<artifactId>telegrambotsextensions</artifactId>
-			<version>LATEST</version>
+			<version>${telegram.version}</version>
 		</dependency>
 
 		<dependency>

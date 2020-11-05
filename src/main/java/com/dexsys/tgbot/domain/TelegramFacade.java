@@ -53,16 +53,15 @@ public class TelegramFacade implements ITelegramFacade {
 
         System.out.println(UsersRepositoryService.getUsersMap());
         System.out.println(inputMsg);
-
         // For test UserMockClient
-//        IUserClient iUserClient = new UserMockClient();
         List<UserDto> usersDto = iUserClient.getUsers();
         System.out.println();
 
-        UserDto userDto = iUserClient.getUser("30e510e6-c0eb-4efe-826b-7f140836097e");
+        String userId = "";
+        UserDto userDto = iUserClient.getUser(userId);
         System.out.println();
 
-        Set<HttpMethod> options = iUserClient.getUserOptions("30e510e6-c0eb-4efe-826b-7f140836097e");
+        Set<HttpMethod> options = iUserClient.getUserOptions(userId);
         System.out.println();
 
         iUserClient.generateUser();
