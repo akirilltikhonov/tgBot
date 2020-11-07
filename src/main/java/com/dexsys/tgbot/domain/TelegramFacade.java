@@ -57,7 +57,7 @@ public class TelegramFacade implements ITelegramFacade {
         List<UserDto> usersDto = iUserClient.getUsers();
         System.out.println();
 
-        String userId = "";
+        String userId = usersDto.get(0).getId().toString();
         UserDto userDto = iUserClient.getUser(userId);
         System.out.println();
 

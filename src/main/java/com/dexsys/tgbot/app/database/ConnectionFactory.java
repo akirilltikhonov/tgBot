@@ -50,25 +50,16 @@ public class ConnectionFactory {
         UserDto userDto = new UserDto();
         
         while (resultSet.next()) {
-//            userDto = UserDto.builder()
-//                    .id(UUID.fromString(resultSet.getString("id")))
-//                    .firstName(resultSet.getString("firstName"))
-//                    .secondName(resultSet.getString("secondName"))
-//                    .middleName(resultSet.getString("middleName"))
-//                    .birthDay(resultSet.getDate("birthDay"))
-//                    .phone(resultSet.getString("phone"))
-//                    .chatId(resultSet.getString("chatId"))
-//                    .male(resultSet.getBoolean("male"))
-//                    .build();
-            userDto.setId(UUID.fromString(resultSet.getString("id")));
-            userDto.setFirstName(resultSet.getString("firstName"));
-            userDto.setSecondName(resultSet.getString("secondName"));
-            userDto.setMiddleName(resultSet.getString("middleName"));
-            userDto.setBirthDay(resultSet.getDate("birthDay"));
-            userDto.setPhone(resultSet.getString("phone"));
-            userDto.setChatId(resultSet.getString("chatId"));
-            userDto.setMale(resultSet.getBoolean("male"));
-
+            userDto = UserDto.builder()
+                    .id(UUID.fromString(resultSet.getString("id")))
+                    .firstName(resultSet.getString("firstName"))
+                    .secondName(resultSet.getString("secondName"))
+                    .middleName(resultSet.getString("middleName"))
+                    .birthDay(resultSet.getDate("birthDay"))
+                    .phone(resultSet.getString("phone"))
+                    .chatId(resultSet.getString("chatId"))
+                    .male(resultSet.getBoolean("male"))
+                    .build();
         }
         return userDto;
     }
