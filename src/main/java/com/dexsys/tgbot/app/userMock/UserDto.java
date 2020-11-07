@@ -1,5 +1,6 @@
 package com.dexsys.tgbot.app.userMock;
 
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,6 +13,8 @@ import java.util.UUID;
 @Setter
 @ToString
 @NoArgsConstructor
+//@Builder
+//@AllArgsConstructor
 
 public class UserDto {
 
