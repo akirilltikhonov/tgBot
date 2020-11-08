@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet  author="postgres"  id="users">
+        <createTable  tableName="users">
+
+            <column  name="id"  type="uuid" remarks="User UUID">
+                <constraints  nullable="false"  primaryKey="true"  unique="true"/>
+            </column>
+
+            <column  name="first_name"  type="varchar2(50)" remarks="User fist name">
+                <constraints  nullable="false"/>
+            </column>
+
+            <column  name="second_name"  type="varchar2(50)" remarks="User second name">
+                <constraints  nullable="false"/>
+            </column>
+
+            <column  name="middle_name"  type="varchar2(50)" remarks="User middle name">
+                <constraints  nullable="true"/>
+            </column>
+
+            <column  name="birthday"  type="date" remarks="User birthday">
+                <constraints  nullable="true"/>
+            </column>
+
+            <column  name="phone"  type="varchar2(50)" remarks="User phone number">
+                <constraints  nullable="true"/>
+            </column>
+
+            <column  name="chat_id"  type="varchar2(50)" remarks="User chatId">
+                <constraints  nullable="false"/>
+            </column>
+
+            <column name="male" type="boolean" remarks="User gender"/>
+
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
