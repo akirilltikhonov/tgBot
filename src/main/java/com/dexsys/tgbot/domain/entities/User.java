@@ -1,15 +1,9 @@
 package com.dexsys.tgbot.domain.entities;
 
-import lombok.NoArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-import org.hibernate.annotations.Entity;
+import lombok.*;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
@@ -25,16 +19,16 @@ import java.util.Date;
 @Table(name = "old_users")
 public class User {
 
-     @Column(name = "userName")
+     @Column(name = "user_name")
      @NonNull
      private String userName;
 
      @Id
-     @Column(name = "chatId")
+     @Column(name = "chat_id")
      @NonNull
-     private long  chatId;
+     private long chatId;
 
-     @Column(name = "chatId")
+     @Column(name = "phone_number")
      private String phoneNumber;
 
      @Column(name = "birthdate")
