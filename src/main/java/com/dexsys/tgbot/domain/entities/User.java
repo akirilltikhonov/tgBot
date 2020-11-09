@@ -1,22 +1,43 @@
 package com.dexsys.tgbot.domain.entities;
 
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.Entity;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
+
 @RequiredArgsConstructor
-@ToString
-@EqualsAndHashCode
+@NoArgsConstructor
 @Setter
 @Getter
+@ToString
+@EqualsAndHashCode
+@Entity
+@Table(name = "old_users")
 public class User {
 
-     private final String userName;
-     private final long  chatId;
+     @Column(name = "userName")
+     @NonNull
+     private String userName;
+
+     @Id
+     @Column(name = "chatId")
+     @NonNull
+     private long  chatId;
+
+     @Column(name = "chatId")
      private String phoneNumber;
+
+     @Column(name = "birthdate")
      private Date birthdate;
 
 }

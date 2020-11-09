@@ -41,4 +41,26 @@
         </createTable>
     </changeSet>
 
+    <changeSet  author="postgres"  id="old_users">
+        <createTable  tableName="old_users">
+
+            <column  name="userName"  type="varchar2(50)" remarks="User name">
+                <constraints  nullable="false"/>
+            </column>
+
+            <column  name="chatId"  type="bigint" remarks="User chatId">
+                <constraints  nullable="false"  primaryKey="true"  unique="true"/>
+            </column>
+
+            <column  name="phoneNumber"  type="varchar2(50)" remarks="User phone number">
+                <constraints  nullable="false"/>
+            </column>
+
+            <column  name="birthdate"  type="date" remarks="User birthday">
+                <constraints  nullable="true"/>
+            </column>
+
+        </createTable>
+    </changeSet>
+
 </databaseChangeLog>
