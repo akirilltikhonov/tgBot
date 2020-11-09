@@ -1,14 +1,20 @@
 package com.dexsys.tgbot.domain;
 
 import com.dexsys.tgbot.adapters.ITelegramFacade;
+import com.dexsys.tgbot.adapters.IUserClient;
 import com.dexsys.tgbot.adapters.IUsersRepositoryService;
+import com.dexsys.tgbot.domain.dto.UserDtoDB;
 import com.dexsys.tgbot.domain.services.MainMenuService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
+
+import java.util.List;
+import java.util.Set;
 
 @Component
 @Slf4j
@@ -22,6 +28,10 @@ public class TelegramFacade implements ITelegramFacade {
 
     @Autowired
     private MainMenuService mainMenuService;
+
+    // For test UserMockClient
+    @Autowired
+    private IUserClient iUserClient;
 
 
     public synchronized SendMessage handleUpdate(Update update) {
@@ -41,6 +51,29 @@ public class TelegramFacade implements ITelegramFacade {
         String inputMsg = message.getText();
         BotState botState;
         SendMessage replyMessage;
+
+        System.out.println(usersRepositoryService.getUsers());
+        System.out.println(inputMsg);
+        // For test UserMockClient
+        List<UserDtoDB> usersDto = iUserClient.getUsers();
+        System.out.println();
+
+        String userId = usersDto.get(0).getId().toString();
+        UserDtoDB userDto = iUserClient.getUser(userId);
+        System.out.println();
+
+        Set<HttpMethod> options = iUserClient.getUserOptions(userId);
+        System.out.println();
+
+        iUserClient.generateUser();
+        System.out.println();
+
+        iUserClient.createUser(new UserDtoDB());
+        System.out.println();
+
+        iUserClient.getUsers();
+        System.out.println();
+        // End testing UserMockClient
 
         //TODO move text of bot state to property file
         if (inputMsg.equals("Enter my date of birth")) {
