@@ -53,26 +53,26 @@ public class TelegramFacade implements ITelegramFacade {
 
         System.out.println(UsersRepositoryService.getUsers());
         System.out.println(inputMsg);
-//        // For test UserMockClient
-//        List<UserDto> usersDto = iUserClient.getUsers();
-//        System.out.println();
-//
-//        String userId = usersDto.get(0).getId().toString();
-//        UserDto userDto = iUserClient.getUser(userId);
-//        System.out.println();
-//
-//        Set<HttpMethod> options = iUserClient.getUserOptions(userId);
-//        System.out.println();
-//
-//        iUserClient.generateUser();
-//        System.out.println();
-//
-//        iUserClient.createUser(new UserDto());
-//        System.out.println();
-//
-//        iUserClient.getUsers();
-//        System.out.println();
-//        // End testing UserMockClient
+        // For test UserMockClient
+        List<UserDto> usersDto = iUserClient.getUsers();
+        System.out.println();
+
+        String userId = usersDto.get(0).getId().toString();
+        UserDto userDto = iUserClient.getUser(userId);
+        System.out.println();
+
+        Set<HttpMethod> options = iUserClient.getUserOptions(userId);
+        System.out.println();
+
+        iUserClient.generateUser();
+        System.out.println();
+
+        iUserClient.createUser(new UserDto());
+        System.out.println();
+
+        iUserClient.getUsers();
+        System.out.println();
+        // End testing UserMockClient
 
         if (inputMsg.equals("Enter my date of birth")) {
             botState = BotState.ENTER_BIRTHDAY;
