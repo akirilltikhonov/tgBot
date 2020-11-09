@@ -2,7 +2,7 @@ package com.dexsys.tgbot.domain;
 
 import com.dexsys.tgbot.adapters.ITelegramFacade;
 import com.dexsys.tgbot.adapters.IUserClient;
-import com.dexsys.tgbot.app.userMock.UserDto;
+import com.dexsys.tgbot.domain.dto.UserDtoDB;
 import com.dexsys.tgbot.domain.services.MainMenuService;
 import com.dexsys.tgbot.domain.services.UsersRepositoryService;
 import lombok.extern.slf4j.Slf4j;
@@ -54,11 +54,11 @@ public class TelegramFacade implements ITelegramFacade {
         System.out.println(UsersRepositoryService.getUsers());
         System.out.println(inputMsg);
         // For test UserMockClient
-        List<UserDto> usersDto = iUserClient.getUsers();
+        List<UserDtoDB> usersDto = iUserClient.getUsers();
         System.out.println();
 
         String userId = usersDto.get(0).getId().toString();
-        UserDto userDto = iUserClient.getUser(userId);
+        UserDtoDB userDtoDB = iUserClient.getUser(userId);
         System.out.println();
 
         Set<HttpMethod> options = iUserClient.getUserOptions(userId);
@@ -67,7 +67,7 @@ public class TelegramFacade implements ITelegramFacade {
         iUserClient.generateUser();
         System.out.println();
 
-        iUserClient.createUser(new UserDto());
+        iUserClient.createUser(new UserDtoDB());
         System.out.println();
 
         iUserClient.getUsers();

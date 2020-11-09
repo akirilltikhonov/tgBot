@@ -3,7 +3,7 @@ package com.dexsys.tgbot.app.controllers;
 
 import com.dexsys.tgbot.adapters.IEntitiesToDTOService;
 import com.dexsys.tgbot.adapters.IUsersRepositoryService;
-import com.dexsys.tgbot.domain.dto.UserDTO;
+import com.dexsys.tgbot.domain.dto.UserDto;
 import com.dexsys.tgbot.domain.entities.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -35,18 +35,18 @@ public class UsersController {
     @ApiOperation("Operation to get users")
     @GetMapping
     @ResponseStatus(code = HttpStatus.OK)
-    public HttpEntity<List<UserDTO>> getUsersInfo() {
+    public HttpEntity<List<UserDto>> getUsersInfo() {
         List<User> users = usersRepositoryService.getUsers();
-        List<UserDTO> usersDTO = entitiesToDTOService.UsersToUsersDTO(users);
+        List<UserDto> usersDTO = entitiesToDTOService.UsersToUsersDTO(users);
         return ResponseEntity.ok(usersDTO);
     }
 
     @ApiOperation("Operation to get user by phone number")
     @GetMapping("/{phoneNumber}")
     @ResponseStatus(code = HttpStatus.OK)
-    public HttpEntity<UserDTO> getUserByPhoneNumber(@PathVariable String phoneNumber) {
+    public HttpEntity<UserDto> getUserByPhoneNumber(@PathVariable String phoneNumber) {
         User user = usersRepositoryService.getUserByPhoneNumber(phoneNumber);
-        UserDTO userDTO = entitiesToDTOService.UserToUserDTO(user);
+        UserDto userDTO = entitiesToDTOService.UserToUserDTO(user);
         return ResponseEntity.ok(userDTO);
     }
 

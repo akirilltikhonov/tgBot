@@ -1,6 +1,7 @@
 package com.dexsys.tgbot.app.userMock;
 
 import com.dexsys.tgbot.adapters.IUserClient;
+import com.dexsys.tgbot.domain.dto.UserDtoDB;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -19,13 +20,13 @@ public class UserMockClient implements IUserClient {
     private RestTemplate restTemplate;
 
     @Override
-    public List<UserDto> getUsers() {
+    public List<UserDtoDB> getUsers() {
         String url = "https://serene-coast-56441.herokuapp.com//api/users";
-        ResponseEntity<UserDto[]> response =
+        ResponseEntity<UserDtoDB[]> response =
                 restTemplate.getForEntity(
                         url,
-                        UserDto[].class);
-        UserDto[] usersDto = response.getBody();
+                        UserDtoDB[].class);
+        UserDtoDB[] usersDto = response.getBody();
 
         System.out.println("getUsers");
         System.out.println(response.getHeaders());
@@ -37,20 +38,20 @@ public class UserMockClient implements IUserClient {
     }
 
     @Override
-    public UserDto getUser(String userId) {
+    public UserDtoDB getUser(String userId) {
         String url = "https://serene-coast-56441.herokuapp.com//api/users" + "/" + userId;
 
-        ResponseEntity<UserDto> response =
+        ResponseEntity<UserDtoDB> response =
                 restTemplate.getForEntity(
                         url,
-                        UserDto.class);
-        UserDto userDto = response.getBody();
+                        UserDtoDB.class);
+        UserDtoDB userDtoDB = response.getBody();
 
         System.out.println("getUser");
         System.out.println(response.getStatusCode());
-        System.out.println(userDto);
+        System.out.println(userDtoDB);
 
-        return userDto;
+        return userDtoDB;
     }
 
     public Set<HttpMethod> getUserOptions(String userId) {
@@ -69,33 +70,33 @@ public class UserMockClient implements IUserClient {
     public void generateUser() {
         String url = "https://serene-coast-56441.herokuapp.com//api/users/generate";
 
-        ResponseEntity<UserDto> response =
+        ResponseEntity<UserDtoDB> response =
                 restTemplate.postForEntity(
                         url,
-                        new UserDto(),
-                        UserDto.class);
-        UserDto userDto = response.getBody();
+                        new UserDtoDB(),
+                        UserDtoDB.class);
+        UserDtoDB userDtoDB = response.getBody();
 
         System.out.println("generateUser");
         System.out.println(response.getStatusCode());
-        System.out.println(userDto);
+        System.out.println(userDtoDB);
     }
 
 
     @Override
-    public void createUser(UserDto userDtoPost) {
+    public void createUser(UserDtoDB userDtoDBPost) {
         String url = "https://serene-coast-56441.herokuapp.com//api/users";
 
-        ResponseEntity<UserDto> response =
+        ResponseEntity<UserDtoDB> response =
                 restTemplate.postForEntity(
                         url,
-                        userDtoPost,
-                        UserDto.class);
-        UserDto userDtoResponse = response.getBody();
+                        userDtoDBPost,
+                        UserDtoDB.class);
+        UserDtoDB userDtoDBResponse = response.getBody();
 
         System.out.println("createUser");
         System.out.println(response.getStatusCode());
-        System.out.println("Post: " + userDtoPost);
-        System.out.println("Response: " + userDtoResponse);
+        System.out.println("Post: " + userDtoDBPost);
+        System.out.println("Response: " + userDtoDBResponse);
     }
 }

@@ -1,4 +1,4 @@
-package com.dexsys.tgbot.app.userMock;
+package com.dexsys.tgbot.domain.dto;
 
 
 import lombok.AllArgsConstructor;
@@ -18,7 +18,7 @@ import java.util.UUID;
 @Builder
 @AllArgsConstructor
 
-public class UserDto {
+public class UserDtoDB {
 
     private UUID id;
     private String firstName;
@@ -29,7 +29,7 @@ public class UserDto {
     private String chatId;
     private boolean male;
 
-    public UserDto(String id) {
+    public UserDtoDB(String id) {
         this.id = UUID.fromString(id);
     }
 

@@ -1,14 +1,14 @@
 package com.dexsys.tgbot.adapters;
 
 import com.dexsys.tgbot.domain.entities.User;
-import com.dexsys.tgbot.domain.dto.UserDTO;
+import com.dexsys.tgbot.domain.dto.UserDto;
 
 import java.util.List;
 
 public interface IEntitiesToDTOService {
 
-    UserDTO UserToUserDTO (User user);
+    UserDto UserToUserDTO (User user);
 
-    List<UserDTO> UsersToUsersDTO (List<User> users);
+    List<UserDto> UsersToUsersDTO (List<User> users);
 
 }
