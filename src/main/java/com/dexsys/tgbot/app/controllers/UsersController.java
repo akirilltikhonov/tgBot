@@ -25,12 +25,13 @@ import java.util.List;
 @Api(value = "Users Controller")
 @RequestMapping("users")
 public class UsersController {
-
     @Autowired
     private IEntitiesToDTOService entitiesToDTOService;
 
     @Autowired
     private IUsersRepositoryService usersRepositoryService;
+
+    //TODO throw NotFoundException in request from here
 
     @ApiOperation("Operation to get users")
     @GetMapping
