@@ -19,9 +19,13 @@ public class UserMockClient implements IUserClient {
     @Autowired
     private RestTemplate restTemplate;
 
+    //TODO move base url to property file
+    String base = "https://serene-coast-56441.herokuapp.com//api/users";
+
     @Override
     public List<UserDtoDB> getUsers() {
-        String url = "https://serene-coast-56441.herokuapp.com//api/users";
+
+        String url = base;
         ResponseEntity<UserDtoDB[]> response =
                 restTemplate.getForEntity(
                         url,
@@ -34,13 +38,15 @@ public class UserMockClient implements IUserClient {
         System.out.println(Arrays.asList(usersDto).toString());
         System.out.println("Number of users:" + response.getBody().length);
 
+        //TODO throw exceptions if status code 404 or no users (or etc)
+
         return Arrays.asList(usersDto);
     }
 
     @Override
     public UserDtoDB getUser(String userId) {
-        String url = "https://serene-coast-56441.herokuapp.com//api/users" + "/" + userId;
 
+        String url = base + "/" + userId;
         ResponseEntity<UserDtoDB> response =
                 restTemplate.getForEntity(
                         url,
@@ -51,11 +57,14 @@ public class UserMockClient implements IUserClient {
         System.out.println(response.getStatusCode());
         System.out.println(userDtoDB);
 
+        //TODO throw exceptions if status code 404 or no user(or etc)
+
         return userDtoDB;
     }
 
     public Set<HttpMethod> getUserOptions(String userId) {
-        String url = "https://serene-coast-56441.herokuapp.com//api/users" + "/" + userId;
+
+        String url = base + "/" + userId;
         Set<HttpMethod> optionsForAllow = restTemplate.optionsForAllow(url);
         HttpHeaders header = restTemplate.headForHeaders(url);
 
@@ -63,13 +72,15 @@ public class UserMockClient implements IUserClient {
         System.out.println(header);
         System.out.println(optionsForAllow);
 
+        //TODO throw exceptions if status code 404 or no user(or etc)
+
         return optionsForAllow;
     }
 
     @Override
     public void generateUser() {
-        String url = "https://serene-coast-56441.herokuapp.com//api/users/generate";
 
+        String url = base + "/generate";
         ResponseEntity<UserDtoDB> response =
                 restTemplate.postForEntity(
                         url,
@@ -80,13 +91,14 @@ public class UserMockClient implements IUserClient {
         System.out.println("generateUser");
         System.out.println(response.getStatusCode());
         System.out.println(userDtoDB);
-    }
 
+        //TODO throw exceptions if status code 404(or etc)
+    }
 
     @Override
     public void createUser(UserDtoDB userDtoDBPost) {
-        String url = "https://serene-coast-56441.herokuapp.com//api/users";
 
+        String url = base;
         ResponseEntity<UserDtoDB> response =
                 restTemplate.postForEntity(
                         url,
@@ -98,5 +110,10 @@ public class UserMockClient implements IUserClient {
         System.out.println(response.getStatusCode());
         System.out.println("Post: " + userDtoDBPost);
         System.out.println("Response: " + userDtoDBResponse);
+
+        //TODO throw exceptions if status code 404 (or etc)
     }
+
+    //TODO PATCH request updateUser(UpdateDto updateDto, UUID userId), url ../api/users/{userId}
+
 }
