@@ -1,8 +1,8 @@
 package com.dexsys.tgbot.domain.handlers.impl;
 
+import com.dexsys.tgbot.adapters.IUsersRepositoryService;
 import com.dexsys.tgbot.domain.BotState;
 import com.dexsys.tgbot.domain.handlers.BotMessageHandler;
-import com.dexsys.tgbot.domain.services.UsersRepositoryService;
 import com.dexsys.tgbot.domain.services.MainMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,7 +18,7 @@ public class SetUserBirthdayHandler implements BotMessageHandler {
     private MainMenuService mainMenuService;
 
     @Autowired
-    private UsersRepositoryService UsersRepositoryService;
+    private IUsersRepositoryService usersRepositoryService;
 
     @Override
     public BotState getHandlerState() {
@@ -30,9 +30,9 @@ public class SetUserBirthdayHandler implements BotMessageHandler {
 
         SendMessage replyMessage = new SendMessage();
         try {
-            UsersRepositoryService.setUserBirthday(
+            usersRepositoryService.setUserBirthday(
                     message.getChatId(),
-                    UsersRepositoryService.getDateFormat().parse(message.getText())
+                    usersRepositoryService.getDateFormat().parse(message.getText())
             );
             replyMessage.setText("ok");
         } catch (ParseException e) {

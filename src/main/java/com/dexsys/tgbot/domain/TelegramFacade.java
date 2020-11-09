@@ -1,8 +1,8 @@
 package com.dexsys.tgbot.domain;
 
 import com.dexsys.tgbot.adapters.ITelegramFacade;
+import com.dexsys.tgbot.adapters.IUsersRepositoryService;
 import com.dexsys.tgbot.domain.services.MainMenuService;
-import com.dexsys.tgbot.domain.services.UsersRepositoryService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,7 +18,7 @@ public class TelegramFacade implements ITelegramFacade {
     private BotStateContext botStateContext;
 
     @Autowired
-    private UsersRepositoryService UsersRepositoryService;
+    private IUsersRepositoryService usersRepositoryService;
 
     @Autowired
     private MainMenuService mainMenuService;
@@ -31,7 +31,7 @@ public class TelegramFacade implements ITelegramFacade {
 
         if (message != null && message.hasText()) {
             replyMessage = handleInputMessage(message);
-            UsersRepositoryService.addUser(message);
+            usersRepositoryService.addUser(message);
         }
         return replyMessage;
     }
