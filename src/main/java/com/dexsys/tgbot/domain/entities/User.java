@@ -1,6 +1,12 @@
 package com.dexsys.tgbot.domain.entities;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,7 +22,7 @@ import java.util.Date;
 @ToString
 @EqualsAndHashCode
 @Entity
-@Table(name = "old_users")
+@Table(name = "users")
 public class User {
 
      @Column(name = "user_name")

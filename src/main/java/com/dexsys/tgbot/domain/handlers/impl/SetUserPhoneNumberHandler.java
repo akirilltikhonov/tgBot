@@ -1,5 +1,6 @@
 package com.dexsys.tgbot.domain.handlers.impl;
 
+import com.dexsys.tgbot.adapters.IUsersRepositoryService;
 import com.dexsys.tgbot.domain.BotState;
 import com.dexsys.tgbot.domain.handlers.BotMessageHandler;
 import com.dexsys.tgbot.domain.services.MainMenuService;
@@ -15,7 +16,7 @@ public class SetUserPhoneNumberHandler implements BotMessageHandler {
     private MainMenuService mainMenuService;
 
     @Autowired
-    private com.dexsys.tgbot.domain.services.UsersRepositoryService UsersRepositoryService;
+    private IUsersRepositoryService usersRepositoryService;
 
     @Override
     public BotState getHandlerState() {
@@ -29,7 +30,7 @@ public class SetUserPhoneNumberHandler implements BotMessageHandler {
         String phoneNumber = message.getText().replaceAll("\\s+", "");
 
         if (phoneNumber.matches("[\\d]{10}")) {
-            UsersRepositoryService.setUserPhoneNumber(message.getChatId(), phoneNumber);
+            usersRepositoryService.setUserPhoneNumber(message.getChatId(), phoneNumber);
             replyMessage.setText("ok");
         } else {
             replyMessage.setText("Incorrect phone number. Try again");

@@ -5,8 +5,8 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
-    <changeSet  author="postgres"  id="users">
-        <createTable  tableName="users">
+    <changeSet  author="postgres"  id="usersDB">
+        <createTable  tableName="usersDB">
 
             <column  name="id"  type="uuid" remarks="User UUID">
                 <constraints  nullable="false"  primaryKey="true"  unique="true"/>
@@ -41,8 +41,8 @@
         </createTable>
     </changeSet>
 
-    <changeSet  author="postgres"  id="old_users">
-        <createTable  tableName="old_users">
+    <changeSet  author="postgres"  id="users">
+        <createTable  tableName="users">
 
             <column  name="user_name"  type="varchar2(50)" remarks="User name">
                 <constraints  nullable="false"/>

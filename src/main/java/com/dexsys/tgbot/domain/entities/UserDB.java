@@ -1,15 +1,14 @@
-package com.dexsys.tgbot.app.database.entities;
-
-import org.hibernate.annotations.Entity;
+package com.dexsys.tgbot.domain.entities;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 import java.util.UUID;
 
 @Entity
-@Table(name = "users")
+@Table(name = "usersDB")
 public class UserDB {
 
     @Id

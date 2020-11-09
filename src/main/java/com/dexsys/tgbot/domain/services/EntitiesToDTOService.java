@@ -1,7 +1,7 @@
 package com.dexsys.tgbot.domain.services;
 
 import com.dexsys.tgbot.adapters.IEntitiesToDTOService;
-import com.dexsys.tgbot.domain.dto.UserDTO;
+import com.dexsys.tgbot.domain.dto.UserDto;
 import com.dexsys.tgbot.domain.entities.User;
 import org.springframework.stereotype.Service;
 
@@ -10,8 +10,8 @@ import java.util.List;
 
 @Service
 public class EntitiesToDTOService implements IEntitiesToDTOService {
-    public UserDTO UserToUserDTO (User user) {
-        UserDTO userDTO = new UserDTO();
+    public UserDto UserToUserDTO (User user) {
+        UserDto userDTO = new UserDto();
         userDTO.setUserName(user.getUserName());
         userDTO.setChatId(user.getChatId());
         userDTO.setPhoneNumber(user.getPhoneNumber());
@@ -19,8 +19,8 @@ public class EntitiesToDTOService implements IEntitiesToDTOService {
         return userDTO;
     }
 
-    public List<UserDTO> UsersToUsersDTO (List<User> users) {
-        List<UserDTO> usersDTO = new ArrayList<>();
+    public List<UserDto> UsersToUsersDTO (List<User> users) {
+        List<UserDto> usersDTO = new ArrayList<>();
         users.forEach(user -> usersDTO.add(UserToUserDTO(user)));
         return usersDTO;
     }

@@ -8,7 +8,7 @@ import java.util.Date;
 
 @Getter
 @Setter
-public class UserDTO {
+public class UserDto {
 
     private String userName;
     private long  chatId;
