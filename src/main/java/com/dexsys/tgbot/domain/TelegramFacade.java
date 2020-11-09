@@ -42,6 +42,7 @@ public class TelegramFacade implements ITelegramFacade {
         BotState botState;
         SendMessage replyMessage;
 
+        //TODO move text of bot state to property file
         if (inputMsg.equals("Enter my date of birth")) {
             botState = BotState.ENTER_BIRTHDAY;
         } else if (mainMenuService.isAllowedEnterBirthday()) {
