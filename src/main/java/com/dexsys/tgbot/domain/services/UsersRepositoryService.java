@@ -49,8 +49,7 @@ public class UsersRepositoryService implements IUsersRepositoryService {
     }
 
     public User getUserByPhoneNumber(String phoneNumber) {
-        return getUsers().stream().filter(user -> user.getPhoneNumber().equals(phoneNumber))
-                .findFirst().orElseThrow(NotFoundException::new);
+        return usersDB.findByPhoneNumber(phoneNumber);
     }
 
     public void deleteUserByPhoneNumber(String phoneNumber) {
