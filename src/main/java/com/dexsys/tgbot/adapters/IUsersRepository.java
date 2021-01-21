@@ -11,4 +11,6 @@ public interface IUsersRepository extends JpaRepository<User, Long> {
     default DateFormat getDateFormat(String dateFormat) {
         return new SimpleDateFormat(dateFormat);
     }
+
+    User findByPhoneNumber(String phoneNumber);
 }
